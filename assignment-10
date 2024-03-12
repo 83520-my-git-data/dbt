@@ -1,0 +1,39 @@
+1)
+
+KD4_Hemant_83520>SELECT DISTINCT(A.SNAME), B.CITY FROM SALESPEOPLE A, SALESPEOPLE B WHERE  B.CITY = A.CITY AND B.SNAME!=A.SNAME;
++--------+--------+
+| SNAME  | CITY   |
++--------+--------+
+| Motika | London |
+| Peel   | London |
++--------+--------+
+
+
+
+
+
+
+
+
+
+
+2)
+
+
+KD4_Hemant_83520>select DISTINCT(A.CNAME), B.CITY, A.RATING  from CUSTOMERS A, CUSTOMERS B WHERE A.RATING=B.RATING AND B.CNAME='Hoffman';
++---------+--------+--------+
+| CNAME   | CITY   | RATING |
++---------+--------+--------+
+| Hoffman | London |    100 |
+| Clemens | London |    100 |
+| Pereira | London |    100 |
++---------+--------+--------+
+
+
+
+
+
+
+
+
+

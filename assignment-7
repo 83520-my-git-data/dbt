@@ -1,0 +1,104 @@
+1)
+
+
+KD4_Hemant_83520>select count(ODATE) from ORDERS where ODATE='1990-10-03';
++--------------+
+| count(ODATE) |
++--------------+
+|            5 |
++--------------+
+
+
+
+2)
+
+
+KD4_Hemant_83520>select count(distinct CITY) "No.of different cities" from CUSTOMERS where CITY is not null;
++------------------------+
+| No.of different cities |
++------------------------+
+|                      4 |
++------------------------+
+1 row in set (0.00 sec)
+
+
+
+3)
+
+
+KD4_Hemant_83520>select min(AMT)"SMALLEST ORDER", CNUM from ORDERS GROUP BY CNUM;
++----------------+------+
+| SMALLEST ORDER | CNUM |
++----------------+------+
+|          18.69 | 2008 |
+|         767.19 | 2001 |
+|        1900.10 | 2007 |
+|        5160.45 | 2003 |
+|        1713.23 | 2002 |
+|          75.75 | 2004 |
+|        4723.00 | 2006 |
++----------------+------+
+
+
+
+
+
+4)
+
+
+
+KD4_Hemant_83520>select CNAME FROM CUSTOMERS WHERE CNAME LIKE 'G%'LIMIT 1;
++----------+
+| CNAME    |
++----------+
+| Giovanni |
++----------+
+1 row in set (0.00 sec)
+
+
+
+
+
+
+
+5)
+
+
+KD4_Hemant_83520>SELECT max(RATING), CITY from CUSTOMERS group by CITY;
++-------------+----------+
+| max(RATING) | CITY     |
++-------------+----------+
+|         100 | London   |
+|         200 | Rome     |
+|         300 | San Jose |
+|         300 | Berlin   |
++-------------+----------+
+
+
+
+
+
+
+
+6)
+
+
+KD4_Hemant_83520>select ODATE, count(distinct SNUM) from ORDERS group by 1;
++------------+----------------------+
+| ODATE      | count(distinct SNUM) |
++------------+----------------------+
+| 1990-10-03 |                    4 |
+| 1990-10-04 |                    2 |
+| 1990-10-05 |                    1 |
+| 1990-10-06 |                    2 |
++------------+----------------------+
+4 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+

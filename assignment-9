@@ -1,0 +1,142 @@
+1)
+
+
+
+KD4_Hemant_83520>select rpad(ONUM,6,' ')"ORDER NUMBER", CNAME"CUSTOMER NAME" from CUSTOMERS, ORDERS WHERE CUSTOMERS.CNUM = ORDERS.CNUM;
++--------------+---------------+
+| ORDER NUMBER | CUSTOMER NAME |
++--------------+---------------+
+| 3001         | Cisneros      |
+| 3003         | Hoffman       |
+| 3002         | Pereira       |
+| 3005         | Liu           |
+| 3006         | Cisneros      |
+| 3009         | Giovanni      |
+| 3007         | Grass         |
+| 3008         | Clemens       |
+| 3010         | Grass         |
+| 3011         | Clemens       |
++--------------+---------------+
+
+
+
+2)
+
+
+KD4_Hemant_83520>select SALESPEOPLE.SNAME, CUSTOMERS.CNAME, ORDERS.ONUM FROM ORDERS, CUSTOMERS, SALESPEOPLE WHERE SALESPEOPLE.SNUM=CUSTOMERS.SNUM AND CUSTOMERS.CNUM=ORDERS.CNUM order by 3;
++---------+----------+------+
+| SNAME   | CNAME    | ONUM |
++---------+----------+------+
+| Rifkin  | Cisneros | 3001 |
+| Motika  | Pereira  | 3002 |
+| Peel    | Hoffman  | 3003 |
+| Serres  | Liu      | 3005 |
+| Rifkin  | Cisneros | 3006 |
+| Serres  | Grass    | 3007 |
+| Peel    | Clemens  | 3008 |
+| Axelrod | Giovanni | 3009 |
+| Serres  | Grass    | 3010 |
+| Peel    | Clemens  | 3011 |
++---------+----------+------+
+
+
+
+
+
+
+3)
+
+
+KD4_Hemant_83520>select CNAME"Customer's name" , SNAME"Salesperson's name", COMM"Salesperson's rate of commission" FROM SALESPEOPLE, CUSTOMERS WHERE SALESPEOPLE.SNUM=CUSTOMERS.SNUM and COMM>0.12;
++-----------------+--------------------+----------------------------------+
+| Customer's name | Salesperson's name | Salesperson's rate of commission |
++-----------------+--------------------+----------------------------------+
+| Liu             | Serres             |                             0.13 |
+| Grass           | Serres             |                             0.13 |
+| Cisneros        | Rifkin             |                             0.15 |
++-----------------+--------------------+----------------------------------+
+
+
+
+
+
+
+4)
+
+
+KD4_Hemant_83520>select ONUM "ORDER NO", CUSTOMERS.CNAME"CUSTOMER NAME", CUSTOMERS.RATING, ORDERS.AMT * SALESPEOPLE.COMM"SALESPERSON COMMISION" FROM SALESPEOPLE, CUSTOMERS, ORDERS WHERE SALESPEOPLE.SNUM=
+CUSTOMERS.SNUM AND CUSTOMERS.CNUM=ORDERS.CNUM AND CUSTOMERS.RATING>100;
++----------+---------------+--------+-----------------------+
+| ORDER NO | CUSTOMER NAME | RATING | SALESPERSON COMMISION |
++----------+---------------+--------+-----------------------+
+|     3001 | Cisneros      |    300 |                  2.80 |
+|     3005 | Liu           |    200 |                670.86 |
+|     3006 | Cisneros      |    300 |                164.72 |
+|     3009 | Giovanni      |    200 |                171.32 |
+|     3007 | Grass         |    300 |                  9.85 |
+|     3010 | Grass         |    300 |                170.29 |
++----------+---------------+--------+-----------------------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
