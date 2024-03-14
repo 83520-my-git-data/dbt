@@ -1,0 +1,56 @@
+1)
+
+
+KD4_Hemant_83520>select ONUM, CNAME FROM ORDERS, CUSTOMERS WHERE ORDERS.CNUM=CUSTOMERS.CNUM AND CNAME=(SELECT CNAME FROM CUSTOMERS WHERE CNAME='Cisneros' );
++------+----------+
+| ONUM | CNAME    |
++------+----------+
+| 3001 | Cisneros |
+| 3006 | Cisneros |
++------+----------+
+
+
+2)
+
+
+KD4_Hemant_83520>SELECT CNAME, RATING FROM  CUSTOMERS WHERE CNUM IN (SELECT CNUM FROM ORDERS WHERE AMT > (SELECT AVG(AMT) FROM ORDERS));
++---------+--------+
+| CNAME   | RATING |
++---------+--------+
+| Liu     |    200 |
+| Clemens |    100 |
++---------+--------+
+
+
+
+
+3)
+
+
+KD4_Hemant_83520>SELECT SNUM, SUM(AMT)"TOTAL AMOUNT" FROM ORDERS GROUP BY SNUM HAVING SUM(AMT)>(SELECT MAX(AMT) FROM ORDERS)  ;
++------+--------------+
+| SNUM | TOTAL AMOUNT |
++------+--------------+
+| 1001 |     15382.07 |
++------+--------------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

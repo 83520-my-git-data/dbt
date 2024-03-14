@@ -1,0 +1,187 @@
+1)
+
+
+KD4_Hemant_83520>SELECT * FROM CUSTOMERS WHERE RATING= ANY (SELECT RATING FROM CUSTOMERS  WHERE SNUM=(SELECT SNUM FROM SALESPEOPLE WHERE SNAME='Serres'));
++------+----------+----------+--------+------+
+| CNUM | CNAME    | CITY     | RATING | SNUM |
++------+----------+----------+--------+------+
+| 2002 | Giovanni | Rome     |    200 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1002 |
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
++------+----------+----------+--------+------+
+
+
+
+
+
+2)
+
+
+
+KD4_Hemant_83520>SELECT SNAME, CITY FROM SALESPEOPLE WHERE CITY != ALL (SELECT CITY FROM CUSTOMERS);
++---------+-----------+
+| SNAME   | CITY      |
++---------+-----------+
+| Rifkin  | Barcelona |
+| Axelrod | New York  |
++---------+-----------+
+
+
+
+3)
+
+
+KD4_Hemant_83520>select * FROM ORDERS WHERE AMT > ANY(SELECT SNUM FROM CUSTOMERS WHERE CITY ='London');
++------+---------+------------+------+------+
+| ONUM | AMT     | ODATE      | CNUM | SNUM |
++------+---------+------------+------+------+
+| 3002 | 1900.10 | 1990-10-03 | 2007 | 1004 |
+| 3005 | 5160.45 | 1990-10-03 | 2003 | 1002 |
+| 3006 | 1098.16 | 1990-10-03 | 2008 | 1007 |
+| 3009 | 1713.23 | 1990-10-04 | 2002 | 1003 |
+| 3008 | 4723.00 | 1990-10-05 | 2006 | 1001 |
+| 3010 | 1309.95 | 1990-10-06 | 2004 | 1002 |
+| 3011 | 9891.88 | 1990-10-06 | 2006 | 1001 |
++------+---------+------------+------+------+
+
+
+
+
+
+
+4)
+
+KD4_Hemant_83520>SELECT * FROM ORDERS WHERE AMT > (SELECT MIN(AMT) FROM ORDERS WHERE CNUM IN (SELECT CNUM FROM SALESPEOPLE WHERE CITY IN('London')));
++------+---------+------------+------+------+
+| ONUM | AMT     | ODATE      | CNUM | SNUM |
++------+---------+------------+------+------+
+| 3003 |  767.19 | 1990-10-03 | 2001 | 1001 |
+| 3002 | 1900.10 | 1990-10-03 | 2007 | 1004 |
+| 3005 | 5160.45 | 1990-10-03 | 2003 | 1002 |
+| 3006 | 1098.16 | 1990-10-03 | 2008 | 1007 |
+| 3009 | 1713.23 | 1990-10-04 | 2002 | 1003 |
+| 3007 |   75.75 | 1990-10-04 | 2004 | 1002 |
+| 3008 | 4723.00 | 1990-10-05 | 2006 | 1001 |
+| 3010 | 1309.95 | 1990-10-06 | 2004 | 1002 |
+| 3011 | 9891.88 | 1990-10-06 | 2006 | 1001 |
++------+---------+------------+------+------+
+
+
+
+KD4_Hemant_83520>SELECT * FROM ORDERS WHERE AMT > (SELECT MAX(AMT) FROM ORDERS WHERE CNUM IN (SELECT CNUM FROM SALESPEOPLE WHERE CITY IN('London')));
+Empty set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
