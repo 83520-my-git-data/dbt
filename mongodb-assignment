@@ -1,0 +1,281 @@
+
+
+
+1) sudo apt-get install gnupg curl
+
+
+
+2) 
+
+curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | \sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \--dearmor
+
+
+3) 
+
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+
+
+
+4) sudo apt-get install -y mongodb-org
+
+
+
+5) sudo systemctl start mongod
+
+
+6)
+
+test> show dbs;
+admin   40.00 KiB
+config  72.00 KiB
+local   72.00 KiB
+
+
+7)
+
+test> use cdac;
+switched to db cdac
+
+
+8)
+
+cdac> show collections
+(nothing)
+
+
+9)
+
+cdac> db.createCollection("library")
+{ ok: 1 }
+cdac> show collections
+library
+
+
+
+10)
+
+
+cdac> db.library.insert({title: 'MongoDB programming', author:'Sameer', likes:100})
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('65f5764f4a2e807fb6db83b0') }
+}
+
+
+
+
+
+
+11)
+
+cdac> db.library.find()
+[
+  {
+    _id: ObjectId('65f5764f4a2e807fb6db83b0'),
+    title: 'MongoDB programming',
+    author: 'Sameer',
+    likes: 100
+  }
+]
+
+
+
+12)
+
+cdac> db.library.insert({title:'MySQL programming', authors:['Jack','Jill'], likes:200})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('65f5778b4a2e807fb6db83b1') }
+}
+
+
+
+13)
+
+cdac> db.library.find()
+[
+  {
+    _id: ObjectId('65f5764f4a2e807fb6db83b0'),
+    title: 'MongoDB programming',
+    author: 'Sameer',
+    likes: 100
+  },
+  {
+    _id: ObjectId('65f5778b4a2e807fb6db83b1'),
+    title: 'MySQL programming',
+    authors: [ 'Jack', 'Jill' ],
+    likes: 200
+  }
+]
+
+
+
+
+
+
+14)
+
+
+cdac> db.library.findOne()
+{
+  _id: ObjectId('65f5764f4a2e807fb6db83b0'),
+  title: 'MongoDB programming',
+  author: 'Sameer',
+  likes: 100
+}
+
+
+
+
+
+
+
+15)
+
+
+cdac> db.library.find().pretty
+[Function: pretty] {
+  returnType: 'this',
+  serverVersions: [ '0.0.0', '999.999.999' ],
+  apiVersions: [ 0, Infinity ],
+  topologies: [ 'ReplSet', 'Sharded', 'LoadBalanced', 'Standalone' ],
+  returnsPromise: false,
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+
+
+cdac> db.library.find()
+[
+  {
+    _id: ObjectId('65f5764f4a2e807fb6db83b0'),
+    title: 'MongoDB programming',
+    author: 'Sameer',
+    likes: 100
+  },
+  {
+    _id: ObjectId('65f5778b4a2e807fb6db83b1'),
+    title: 'MySQL programming',
+    authors: [ 'Jack', 'Jill' ],
+    likes: 200
+  }
+]
+
+
+
+
+
+
+
+
+16)
+
+cdac> db.library.updateOne({author:'Sameer'},{$set:{author:'Sameer dehadrai'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+
+
+
+
+
+
+17)
+
+cdac> db.library.remove({likes:100})
+DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany, findOneAndDelete, or bulkWrite.
+{ acknowledged: true, deletedCount: 1 }
+
+
+
+
+
+
+18)
+
+cdac> db.library.drop()
+true
+
+
+
+
+19)
+
+
+cdac> db.dropDatabase()
+{ ok: 1, dropped: 'cdac'}
+
+
+20)
+
+exit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
